@@ -34,7 +34,7 @@ public class RobotFreeAnim : MonoBehaviour {
         {
             anim.SetBool("Walk_Anim", false);
         }
-        gameObject.transform.eulerAngles = rot;
+        //gameObject.transform.eulerAngles = rot;
 	}
 
 	void CheckKey()
