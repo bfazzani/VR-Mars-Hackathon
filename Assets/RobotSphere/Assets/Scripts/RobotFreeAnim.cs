@@ -7,6 +7,7 @@ public class RobotFreeAnim : MonoBehaviour {
 	Vector3 rot = Vector3.zero;
 	float rotSpeed = 40f;
 	Animator anim;
+    public GameObject target;
 
     private float speed = 1.4f;
 
@@ -20,7 +21,11 @@ public class RobotFreeAnim : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-		CheckKey();
+		//CheckKey();
+        if(target != null)
+        {
+
+        }
 		gameObject.transform.eulerAngles = rot;
 	}
 

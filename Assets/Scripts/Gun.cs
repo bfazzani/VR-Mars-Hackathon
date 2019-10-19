@@ -10,6 +10,8 @@ public class Gun : MonoBehaviour {
 
     public GameObject bullet;
 
+    public GameObject robot;
+
     private void Start() {
         myGrabber = GetComponent<Grabber>();
         handedness = myGrabber.handedness;
@@ -24,10 +26,13 @@ public class Gun : MonoBehaviour {
 
     private void Shoot() {
         RaycastHit hit;
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.red);
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, 1))
+        Destroy(Instantiate(bullet, transform.position, transform.rotation), 2f);
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, 1))
         {
-            Destroy(Instantiate(bullet, transform.position, transform.rotation), 2f);
+            GameObject target = hit.collider.gameObject;
+            if(target.tag == "Enemy"){
+                robot.target = target;
+            }
         }
         
     }
