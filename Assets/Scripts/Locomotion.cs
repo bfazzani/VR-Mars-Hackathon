@@ -26,6 +26,5 @@ public class Locomotion : MonoBehaviour {
 
         velocity = Vector3.ClampMagnitude(newVel, maxSpeed);
         transform.Translate(velocity * Time.deltaTime);
-
     }
 }
