@@ -30,9 +30,9 @@ public class Gun : MonoBehaviour {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, 1))
         {
             GameObject target = hit.collider.gameObject;
-            if(target.tag == "Enemy"){
+           // if(target.tag == "Enemy"){
                 robot.target = target;
-            }
+            //}
         }
         
     }
