@@ -24,9 +24,17 @@ public class RobotFreeAnim : MonoBehaviour {
 		//CheckKey();
         if(target != null)
         {
-
+            anim.SetBool("Walk_Anim", true);
+            rot[1] = Vector3.Angle(transform.forward, target.transform.position - transform.position);
+            Vector3 velocity = target.transform.position - transform.position;
+            velocity.Normalize();
+            transform.Translate(velocity * Time.deltaTime);
         }
-		gameObject.transform.eulerAngles = rot;
+        else
+        {
+            anim.SetBool("Walk_Anim", false);
+        }
+        gameObject.transform.eulerAngles = rot;
 	}
 
 	void CheckKey()
