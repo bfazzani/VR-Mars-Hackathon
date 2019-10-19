@@ -7,6 +7,8 @@ TagManager:
   - ExcludeTeleport
   - TeleportIgnore
   - Enemy
+  - Robot
+  - Wall
   layers:
   - Default
   - TransparentFX

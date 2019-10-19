@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     Animator anim;
 
     [SerializeField]
-    private float speed = 0.7f;
+    private float speed = 0.5f;
 
     private Vector3 player;
 
@@ -34,5 +34,19 @@ public class Enemy : MonoBehaviour
             transform.position,
             player,
             Time.deltaTime * speed);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Robot")
+        {
+            anim.SetBool("isDead", true);
+            Destroy(this, 15f);
+        }
+        else if (collision.gameObject.tag == "Wall")
+        {
+            Destroy(collision.gameObject);
+            Destroy(this);
+        }
     }
 }

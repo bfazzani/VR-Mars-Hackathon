@@ -10,7 +10,7 @@ public class Gun : MonoBehaviour {
 
     public GameObject bullet;
 
-    public GameObject robot;
+    public RobotFreeAnim robot;
 
     private void Start() {
         myGrabber = GetComponent<Grabber>();
