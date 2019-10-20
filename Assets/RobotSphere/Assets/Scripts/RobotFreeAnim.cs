@@ -9,7 +9,7 @@ public class RobotFreeAnim : MonoBehaviour {
 	Animator anim;
     public GameObject target;
 
-    private float speed = 1.4f;
+    private float speed = 4f;
 
 	// Use this for initialization
 	void Awake()
@@ -28,7 +28,7 @@ public class RobotFreeAnim : MonoBehaviour {
             rot[1] = Vector3.Angle(transform.forward, target.transform.position - transform.position);
             Vector3 velocity = target.transform.position - transform.position;
             velocity.Normalize();
-            transform.Translate(velocity * Time.deltaTime);
+            transform.Translate(speed * velocity * Time.deltaTime);
         }
         else
         {
@@ -37,7 +37,15 @@ public class RobotFreeAnim : MonoBehaviour {
         //gameObject.transform.eulerAngles = rot;
 	}
 
-	void CheckKey()
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            target = null;
+        }
+    }
+
+    void CheckKey()
 	{
         float vert = VRInput.GetAxis(VRButton.RightThumbVertical);
         float horiz = VRInput.GetAxis(VRButton.RightThumbHorizontal);
